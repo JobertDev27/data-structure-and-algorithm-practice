@@ -48,6 +48,21 @@ class List {
     return amount;
   }
 
+  at(index) {
+    if (!this.root) return "List is empty";
+
+    let currItem = this.root;
+    let currIndex = 0;
+
+    while (currItem) {
+      if (currIndex === index) return currItem.getValue();
+      currItem = currItem.getNext();
+      currIndex += 1;
+    }
+
+    return "Index out of bounds";
+  }
+
   toString() {
     if (!this.root) return "List is empty";
     let currItem = this.root;
@@ -99,3 +114,4 @@ console.log(list.head());
 console.log(list.tail());
 console.log(list.size());
 console.log(list.toString());
+console.log(list.at(2));
