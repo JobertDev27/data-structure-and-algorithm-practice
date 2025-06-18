@@ -63,6 +63,19 @@ class List {
     return "Index out of bounds";
   }
 
+  pop() {
+    let currItem = this.root;
+    let prevItem = this.root;
+    while (currItem) {
+      if (!currItem.getNext()) {
+        this.end = prevItem;
+        return prevItem.setNext(null);
+      }
+      prevItem = currItem;
+      currItem = currItem.getNext();
+    }
+  }
+
   toString() {
     if (!this.root) return "List is empty";
     let currItem = this.root;
@@ -115,3 +128,6 @@ console.log(list.tail());
 console.log(list.size());
 console.log(list.toString());
 console.log(list.at(2));
+list.pop();
+console.log(list.toString());
+console.log(list.tail());
