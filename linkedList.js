@@ -91,6 +91,19 @@ class List {
     return "Value not found";
   }
 
+  contains(value) {
+    if (!this.root) return "List is empty";
+
+    let currItem = this.root;
+
+    while (currItem) {
+      if (currItem.getValue() === value) return true;
+      currItem = currItem.getNext();
+    }
+
+    return false;
+  }
+
   toString() {
     if (!this.root) return "List is empty";
     let currItem = this.root;
@@ -147,3 +160,4 @@ console.log(list.find("hey"));
 list.pop();
 console.log(list.toString());
 console.log(list.tail());
+console.log(list.contains("hello"));
