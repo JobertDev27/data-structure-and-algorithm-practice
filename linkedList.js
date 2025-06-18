@@ -76,6 +76,21 @@ class List {
     }
   }
 
+  find(value) {
+    if (!this.root) return "List is empty";
+
+    let currItem = this.root;
+    let currIndex = 0;
+
+    while (currItem) {
+      if (currItem.getValue() === value) return currIndex;
+      currItem = currItem.getNext();
+      currIndex += 1;
+    }
+
+    return "Value not found";
+  }
+
   toString() {
     if (!this.root) return "List is empty";
     let currItem = this.root;
@@ -128,6 +143,7 @@ console.log(list.tail());
 console.log(list.size());
 console.log(list.toString());
 console.log(list.at(2));
+console.log(list.find("hey"));
 list.pop();
 console.log(list.toString());
 console.log(list.tail());
